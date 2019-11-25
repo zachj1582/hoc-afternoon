@@ -2,7 +2,7 @@
 
 # Project Summary
 
-In this project, we'll be creating two of the same projects. One will be written as a higher order component (HOC) and the other will be written as a render prop. It is important to remember that these are two different patterns to accomplish the same task. In this project we will be building a currency converter that will convert a foreign currency to USD.
+In this project, we'll practice creating a higher order component (HOC). This app will have the same general functionality as the app we will create in the sister project with a render prop. It is important to remember that these are two different patterns to accomplish the same task. In this project we will be building a currency converter that will convert a foreign currency to USD.
 
 ## Step 1
 
@@ -44,9 +44,9 @@ In this step, we'll create the skeleton for our Higher Order Component (HOC).
 
 ### Instructions
 
-- Import React.
+- Import React in `CurrencyConverter.js`.
 - Create a function called `withCurrency` that will return a class component called `Currency`
-- The `withCurrency` function should take one paramter we will call `BaseComponent`.
+- The `withCurrency` function should take one paramter we will call `BaseComponent`
 
 <details>
 
@@ -56,7 +56,7 @@ In this step, we'll create the skeleton for our Higher Order Component (HOC).
 
 Remember, a Higher Order Component (HOC) is just a function that returns a new component. The naming convention of `withNAMEofFUNCTION` is common for HOC's.
 
-We first want to create an arrow function called `withCurrency` that takes in one parameter, `BaseComponent`. The `withCurrency` function will return a new component that we will call `Currency`
+We first want to create an arrow function called `withCurrency` that takes in one parameter, `BaseComponent`. The `withCurrency` function will return a new class-based component that we will call `Currency`
 
 ```js
 const withCurrency = (BaseComponent) => (
@@ -64,7 +64,7 @@ const withCurrency = (BaseComponent) => (
 )
 ```
 
-The `BaseComponent` parameter will be used to hold the template of a component we will pass in once we invoke the function.
+Give the returned `Currency` component a render method and have it return empty parentheses for now. This is where will put some JSX in a bit. The `BaseComponent` parameter will be used to hold the template of a component we will pass in once we invoke the function.
 
 </details>
 
