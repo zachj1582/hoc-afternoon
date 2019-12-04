@@ -349,19 +349,19 @@ In this step, we'll invoke our function and build out a component to display the
 
 ### Instructions
 
-- At the bottom of the file, create a new variable called `ExchangedCurrency` which will hold the returned component from invoking `withCurrency`.
-- One thing to remember is that `withCurrency` required a paramater we called `BaseComponent`. Since we will be invoking the `withCurrency` function, we need to create a component to use.
-- Create a new file called `CurrencyDisplay.js` inside of our `Components` folder. This component will be a functional component, meaning it has no state. We will need to have `props` be one of our parameters. Think back to the previous step, what were the two props on BaseComponent? You can destructure them if you want. We will use data from `props.currency` and the amount from `props.amount` to display and convert our currency.
+- At the bottom of the file, create a new variable called `ExchangedCurrency` which will hold the component returned from invoking `withCurrency`.
+- One thing to remember is that `withCurrency` required a parameter we called `BaseComponent`. Since we will be invoking the `withCurrency` function, we need to create a component to use.
+- Create a new component inside `CurrencyDisplay.js`. This component will be a functional component, meaning it has no state. We will need to have `props` be one of our parameters. Think back to the previous step, what were the two props on BaseComponent? You can destructure them if you want. We will use data from `props.currency` and the amount from `props.amount` to display and convert our currency.
 
 <details>
 
-<summary> <code> Detailed Instructions </code> Pt 1 </summary>
+<summary> <code> Detailed Instructions </code> </summary>
 
 <br />
 
-- At the bottom of `CurrencyConverter.js` create a new constant called `ExchangedCurrency`. This variable will hold the result of invoking `withCurrency`. Because `withCurrency` requires a `BaseComponent` parameter, we will need to create that but first we will need to export our `ExchangedCurrency` variable.
-- Let's create a `CurrencyDisplay.js` file in `Components/`. This is where we'll display our converted currency. The component should be functional, take in one paramater called `props` and return some JSX. The JSX will be a `<p></p>` element. The `p` element should show the US Dollar amount, the name of the currency, the symbol and then the amount of the exchanged currency. Export the newly created component.
-- Back inside of `CurrencyDisplay.js`, import our `CurrencyDisplay.js` component and use it at the bottom of the file where we will be invoking the `withCurrency` function.
+- At the bottom of `CurrencyConverter.js` create a new constant called `ExchangedCurrency`. This variable will hold the result of invoking `withCurrency`. Because `withCurrency` requires a `BaseComponent` parameter, we will need to create that but first we will need to export our `ExchangedCurrency` variable. (Part 1)
+- Switch to our `CurrencyDisplay.js` file. This is where we'll display our converted currency. The component should be functional, take in one paramater called `props` and return some JSX. The JSX will be a `<p></p>` element. The `p` element should show the US Dollar amount, the name of the currency, the symbol and then the amount of the exchanged currency. Export the newly created component.
+- Back inside of `CurrencyConverter.js`, import our `CurrencyDisplay.js` component and pass it as argument to the invocation of `withCurrency` at the bottom of the file. (Part 2)
 
 </details>
 
@@ -369,7 +369,7 @@ In this step, we'll invoke our function and build out a component to display the
 
 <details>
 
-<summary> <code> src/Components/CurrencyConverter.js </code> </summary>
+<summary> <code> src/Components/CurrencyConverter.js </code> Part 1 </summary>
 
 ```jsx
 import React, { Component } from 'react'
@@ -408,7 +408,7 @@ export default CurrencyDisplay
 
 <details>
 
-<summary> <code> src/Components/CurrencyConverter.js </code> Pt 2</summary>
+<summary> <code> src/Components/CurrencyConverter.js </code> Part 2 </summary>
 
 ```jsx
 import React, { Component } from 'react'
