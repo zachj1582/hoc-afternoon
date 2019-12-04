@@ -94,11 +94,11 @@ const withCurrency = (BaseComponent) => (
 
 ### Summary
 
-In this step, we will create the boilerplate for our currency converter. this will include a drop down and buttons to increment and decrement the amount to convert.
+In this step, we will create the boilerplate for our `CurrencyConverter`. This will include a drop down and buttons to increment and decrement the amount to convert.
 
 ### Instructions
 
-- Set intial state for this component. We will need three keys: `currencyChosen : false`, `selected currency: 'Select Currency'` and `amount: 0`.
+- Set intial state for this component. We will need three keys: `currencyChosen : false`, `selectedCurrency: 'Select Currency'` and `amount: 0`.
 
 ```js
 const currencyData = [
@@ -111,7 +111,7 @@ const currencyData = [
 ```
 
 - We will use the above array, `currencyData`, to map over and dynamically create options inside of a soon to be created `select` element.
-- Create a `<select>` element to hold the options created above along with a single default option with a value of 'Select Country'.
+- Create a `<select>` element to hold the options created above along with a single default option with a value of 'Select Currency'.
 - Create two `<button>` elements, one should have `+` as it's inner text and the other should be `-`.
 - Below the `button`'s display the `BaseComponent` parameter like it is a React Component.
 
@@ -121,21 +121,21 @@ const currencyData = [
 
 <br />
 
-- Set some intial state for this component. We will need a `currencyChosen` which will default to `false`, `selected currency` which will default as 'Select Currency' (spelling and capitalization are important here) and finally an `amount` with the default of `0`.
+- Set some intial state for `Currency` component. We will need a `currencyChosen` which will default to `false`, `selectedCurrency` which will default as 'Select Currency' (spelling and capitalization are important here) and finally an `amount` with the default of `0`.
 
 ```js
 const currencyData = [
-	{ name: 'Japanese Yen', symbol: '¥', rate: 113.6 },
-	{ name: 'British Pound', symbol: '£', rate: 0.77 },
-	{ name: 'Canadian Dollar', symbol: 'CAD', rate: 1.32 },
-	{ name: 'Mexican Peso', symbol: 'Mex$', rate: 20.41 },
-	{ name: 'Swiss Franc', symbol: 'Fr.', rate: 1.01 }
+	{ name: 'Japanese Yen', symbol: '¥', rate: 113.6, id: 0 },
+	{ name: 'British Pound', symbol: '£', rate: 0.77, id: 1 },
+	{ name: 'Canadian Dollar', symbol: 'CAD', rate: 1.32, id: 2 },
+	{ name: 'Mexican Peso', symbol: 'Mex$', rate: 20.41, id: 3 },
+	{ name: 'Swiss Franc', symbol: 'Fr.', rate: 1.01, id: 4 }
 ]
 ```
 
 - Copy the above `currencyData` array inside of thhe `render()` method but outside of the `return` inside of the `Currency` component.
-- Using `.map()`, create an `<option>` element for each item of the `currencyData` array. Each `<option>` element should have a `key`, and `id` and have the individual currency name as text. call the new array `currencyOptions`.
-- Create a container div `<div>`. Inside of the `div` create a `<select>` element.
+- Using `.map()`, create an `<option>` element for each item of the `currencyData` array. Each `<option>` element should have a `key` set to a unique value on the currency object (use the `id`), and `value` set to the index the currency occupies in the array, and have the individual currency name as text. Call the new array `currencyOptions`.
+- Create a container div `<div>`. Inside of the `div` create a `<select>` element. Set its `value` equal to the `selectedCurrency` on state.
 - Inside of the `select` create a single `<option>` element with a attribute of `value='Select Currency'` and 'Select Curreny' as the inner text. Below that, inside of `{}` display the `currencyOptions`.
 - Create a new `<div>` to hold buttons that will increment and decrement the currency amount.
 - Inside of the newly created `div`, create two `<button>` elements, one should have `+` as it's inner text and the other should be `-`. The button with the `+` should have a className of `add` and the button with the `-` should have a className of `minus`
@@ -161,11 +161,11 @@ const withCurrency = (BaseComponent) =>
 
 		render() {
 			const currencyData = [
-				{ name: 'Japanese Yen', symbol: '¥', rate: 113.6 },
-				{ name: 'British Pound', symbol: '£', rate: 0.77 },
-				{ name: 'Canadian Dollar', symbol: 'CAD', rate: 1.32 },
-				{ name: 'Mexican Peso', symbol: 'Mex$', rate: 20.41 },
-				{ name: 'Swiss Franc', symbol: 'Fr.', rate: 1.01 }
+				{ name: 'Japanese Yen', symbol: '¥', rate: 113.6, id: 0 },
+				{ name: 'British Pound', symbol: '£', rate: 0.77, id: 1 },
+				{ name: 'Canadian Dollar', symbol: 'CAD', rate: 1.32, id: 2 },
+				{ name: 'Mexican Peso', symbol: 'Mex$', rate: 20.41, id: 3 },
+				{ name: 'Swiss Franc', symbol: 'Fr.', rate: 1.01, id: 4 }
 			]
 			const currencyOptions = currencyData.map((currency, index) => (
 				<option key={index} value={index}>
