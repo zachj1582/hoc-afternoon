@@ -447,14 +447,14 @@ In this step we need to import our newly created `ExchangedCurrency` component i
 import React, { Component } from 'react'
 import './App.css'
 
-import CurrencyHOC from './Components/CurrencyConverter'
+import ExchangedCurrency from './Components/CurrencyConverter'
 
 class App extends Component {
   render() {
     return (
       <>
         <h2>Higher Order Component</h2>
-        <CurrencyHOC />
+        <ExchangedCurrency />
       </>
     )
   }
@@ -483,7 +483,7 @@ This is happening because we are trying to display our `CurrencyDisplay.js` comp
 
 <br />
 
-Head down to the return of the `Currency` component inside of `withCurrency`. Here we will use a ternary to determine if our user has selected something from the dropdownn. Luckily on state we have a key of `currencyChose` which is a boolean. Use this to determine of we should display the BaseComponent or if we should display the text `Please Select Currency`.
+Head down to the return of the `Currency` component inside of `withCurrency`. Here we will use a ternary to determine if our user has selected something from the dropdownn. Luckily on state we have a key of `currencyChosen` which is a boolean. Use this to determine if we should display the BaseComponent or if we should display the text `Please Select Currency`.
 
 </details>
 
