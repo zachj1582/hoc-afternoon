@@ -134,7 +134,7 @@ const currencyData = [
 ```
 
 - Copy the above `currencyData` array inside of thhe `render()` method but outside of the `return` inside of the `Currency` component.
-- Using `.map()`, create an `<option>` element for each item of the `currencyData` array. Each `<option>` element should have a `key` set to a unique value on the currency object (use the `id`), and `value` set to the index the currency occupies in the array, and have the individual currency name as text. Call the new array `currencyOptions`.
+- Using `.map()`, create an `<option>` element for each item of the `currencyData` array. Each `<option>` element should have a `key` set to a unique value on the currency object (use the `id`), and `value` set to the `index` the currency occupies in the array, and have the individual currency name as text. Call the new array `currencyOptions`.
 - Create a container div `<div>`. Inside of the `div` create a `<select>` element. Set its `value` equal to the `selectedCurrency` on state.
 - Inside of the `select` create a single `<option>` element with a attribute of `value='Select Currency'` and 'Select Curreny' as the inner text. Below that, inside of `{}` display the `currencyOptions`.
 - Create a new `<div>` to hold buttons that will increment and decrement the currency amount.
@@ -168,7 +168,7 @@ const withCurrency = (BaseComponent) =>
 				{ name: 'Swiss Franc', symbol: 'Fr.', rate: 1.01, id: 4 }
 			]
 			const currencyOptions = currencyData.map((currency, index) => (
-				<option key={index} value={index}>
+				<option key={currency.id} value={index}>
 					{currency.name}
 				</option>
 			))
@@ -212,13 +212,13 @@ In this step, we'll create three methods to help us handle user interactions. We
 
 <br />
 
-- Let's start off by creating a method that will handle the increase of the amount on state. We will be using the public class field syntax and using `setState` with a callback, rather than a object. The callback will take one parameter, `prevState`. This parameter gives us access to state without modifying it directly.
+- Let's start off by creating a method that will handle the increase of the amount on state. We will be using the public class field syntax and using `setState` with a callback, rather than a object. The callback will take one parameter, `prevState`. This parameter gives us access to state without modifying it directly (this is an example of closure!). The callback function needs to return an object that will be used to update state.
 
 ```jsx
 handleAmountIncrease = () => {
 	this.setState((prevState) => {
 		return {
-			amount: (prevState.amount += 1)
+			amount: prevState.amount + 1
 		}
 	})
 }
@@ -230,13 +230,13 @@ handleAmountIncrease = () => {
 handleAmountDecrease = () => {
 	this.setState((prevState) => {
 		return {
-			amount: (prevState.amount -= 1)
+			amount: prevState.amount - 1
 		}
 	})
 }
 ```
 
-- Finally we will create a method that will handle the user selection from the dropdown. We will be using the public class field syntax and using `setState` with a callback for this as well. The callback will take one parameter, `prevState`. This parameter gives us access to state without modifying it directly. This method will need an event passed into it. We will assign the value from `evt.target.value` to a variable we will call `userValue`. This `setState` won't need access to the `prevState` parameter but we will still use the callback syntax. Return a new object from `setState` that updates `selectedCurrency` and `curencyChosen` on state. The new value of `selectedCurrency` will be the `userValue` variable. The new value of `currencyChosen` will be a boolean. Using a ternary, determine if `userValue` is equal to 'Selected Currency' (punctuation matters here). If it does, set the value to `false`, otherwise set to `true`.
+- Finally we will create a method that will handle the user selection from the dropdown. We will be using the public class field syntax and using `setState` with a callback for this as well. This method will expect an event (`evt`) as it's only parameter. We will assign the value from `evt.target.value` to a variable we will call `userValue`. Return a new object from `setState` that updates `selectedCurrency` and `curencyChosen` on state. The new value of `selectedCurrency` will be the `userValue` variable. The new value of `currencyChosen` will be a boolean. Using a ternary, determine if `userValue` is equal to 'Selected Currency' (capitalization matters here). If it does, set the value to `false`, otherwise set to `true`.
 
 ```jsx
 handleOptionSelect = (evt) => {
@@ -283,14 +283,11 @@ const withCurrency = (BaseComponent) =>
 		}
 
 		handleAmountDecrease = () => {
-			return (
-				this.state.amount > 0 &&
-				this.setState((prevState) => {
-					return {
-						amount: prevState.amount - 1
-					}
-				})
-			)
+			this.setState((prevState) => {
+				return {
+					amount: prevState.amount - 1
+				}
+			})
 		}
 
 		handleOptionSelect = (evt) => {
@@ -305,14 +302,14 @@ const withCurrency = (BaseComponent) =>
 
 		render() {
 			const currencyData = [
-				{ name: 'Japanese Yen', symbol: '¥', rate: 113.6 },
-				{ name: 'British Pound', symbol: '£', rate: 0.77 },
-				{ name: 'Canadian Dollar', symbol: 'CAD', rate: 1.32 },
-				{ name: 'Mexican Peso', symbol: 'Mex$', rate: 20.41 },
-				{ name: 'Swiss Franc', symbol: 'Fr.', rate: 1.01 }
+				{ name: 'Japanese Yen', symbol: '¥', rate: 113.6, id: 0 },
+				{ name: 'British Pound', symbol: '£', rate: 0.77, id: 1 },
+				{ name: 'Canadian Dollar', symbol: 'CAD', rate: 1.32, id: 2 },
+				{ name: 'Mexican Peso', symbol: 'Mex$', rate: 20.41, id: 3 },
+				{ name: 'Swiss Franc', symbol: 'Fr.', rate: 1.01, id: 4 }
 			]
 			const currencyOptions = currencyData.map((currency, index) => (
-				<option key={index} value={index}>
+				<option key={currency.id} value={index}>
 					{currency.name}
 				</option>
 			))
